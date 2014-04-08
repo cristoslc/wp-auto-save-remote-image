@@ -1,10 +1,10 @@
 <?php  
 /*  
 Plugin Name: Auto Save Remote Image 
-Plugin URI: http://www.devsaab.com/wordpress/  
+Plugin URI: https://github.com/cristoslc/wp-auto-save-remote-image  
 Description: This plugin automatically downloads the first remote image from a post and sets it as the featured image.
-Version: 1.3
-Author: Prebhdev Singh 
+Version: 1.4
+Author: Cristos L-C 
 Disclaimer: No warranty or guarantee of any kind!  Use this in your own risk.  
 */
 add_action('publish_post', 'fetch_images');
@@ -17,7 +17,8 @@ function fetch_images( $post_ID )
 
 	if ( !current_user_can('edit_post', $post_ID) ) 
 	return;
-	
+
+	//Check if there is already a featured image; if there is, then quit.
 	if ( '' != get_the_post_thumbnail() )
 	return;
 
